@@ -32,7 +32,8 @@ jobs:
     - name: MSBuild
       run: |
         msbuild.exe Seatbelt.sln /p:Configuration=Release /p:Platform="Any CPU" /p:OutputPath=compiled/
-        Copy-Item -Path Seatbelt\compiled\Seatbelt.exe -Destination compiled\Seatbelt.exe
+        ls Seatbelt
+        Copy-Item -Path Seatbelt\Seatbelt\compiled\Seatbelt.exe -Destination compiled\Seatbelt.exe
 
     - name: Build Package
       # Powershell is utter fucking trash.
