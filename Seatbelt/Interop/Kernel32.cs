@@ -69,9 +69,14 @@ namespace Seatbelt.Interop
          IntPtr templateFile);
 
         [DllImport("kernel32.dll", SetLastError = true)]
-        public static extern bool GetNamedPipeServerProcessId(
-           IntPtr hPipe,
-           out int ClientProcessId);
+        public static extern bool GetNamedPipeServerProcessId(IntPtr hPipe, out int ProcessId);
+
+        [DllImport("kernel32.dll", SetLastError = true)]
+        public static extern bool GetNamedPipeServerSessionId(IntPtr hPipe, out int ProcessId);
+
+        [DllImport("kernel32.dll")]
+        public static extern IntPtr GetConsoleWindow();
+
 
         [Flags]
         public enum ProcessAccess

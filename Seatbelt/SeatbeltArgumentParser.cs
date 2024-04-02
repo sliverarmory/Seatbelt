@@ -20,6 +20,7 @@ namespace Seatbelt
             {
                 var quietMode = ParseAndRemoveSwitchArgument("-q");
                 var filterResults = !ParseAndRemoveSwitchArgument("-Full");
+                var randomizeOrder = ParseAndRemoveSwitchArgument("-RandomizeOrder");
 
                 var commandGroups = ParseAndRemoveKeyValueArgument("-Group");
                 var outputFile = ParseAndRemoveKeyValueArgument("-OutputFile");
@@ -27,14 +28,16 @@ namespace Seatbelt
                 var userName = ParseAndRemoveKeyValueArgument("-Username");
                 var password = ParseAndRemoveKeyValueArgument("-Password");
 
-                
+                var delayCommands = ParseAndRemoveKeyValueArgument("-DelayCommands");
 
                 return new SeatbeltOptions(
                     Arguments.ToList(),      // Everything else that isn't parsed is interpreted as a command
                     commandGroups == null ? new List<string>() : commandGroups.Split(',').Select(g => g.Trim()).ToList(),
                     outputFile,
                     filterResults,
+                    randomizeOrder,
                     quietMode,
+                    delayCommands,
                     computerName,
                     userName,
                     password
